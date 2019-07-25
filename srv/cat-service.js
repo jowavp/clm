@@ -5,26 +5,18 @@ module.exports = (srv) => {
     // Reply mock data for Books...
     srv.on('READ', 'Users', async (req) => {
 
-        const users = [
+        return [
             {
-                email: 'joachim.vanpraet@flexso.com',
-                firstname: 'Joachim',
-                lastname: 'Van Praet'
+                email: 'jef.dev@test.com',
+                firstname: 'Jef',
+                lastname: 'dev'
             },
             {
-                email: 'nico.deleener@flexso.com',
-                firstname: 'Nico',
-                lastname: 'Deleener'
+                email: 'jan.jansen@test.com',
+                firstname: 'Jan',
+                lastname: 'Jansen'
             }
         ]
-        // try to get the cards for each user
-        // users.forEach(usr => {
-        //     usr.cards.push({
-
-        //     })
-        // })
-        console.log(req.query)
-        return users;
     }
     )
 

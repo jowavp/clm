@@ -9,7 +9,7 @@ service CardLifecycleService {
     key email   : String;
     firstname   : String;
     lastname    : String;
-    cards       : Association to many BlueCards on cards.email = $self.email;
+    // cards       : Association to many BlueCards on cards.email = $self.email;
   }
     
 }
