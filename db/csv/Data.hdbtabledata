@@ -1,0 +1,18 @@
+{
+	"format_version": 1,
+	"imports": [
+		{
+			"target_table": "BLUECARDS",
+			"source_data": {
+				"data_type": "CSV",
+				"file_name": "com.vanmarcke.bluecard-BlueCards.csv",
+				"has_header": true
+			},
+			"import_settings": {
+				"import_columns": [
+					"ID","cardnumber","active","email","company","created_by","created_at"
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,5 @@
+ID,cardnumber,active,email,company,created_by,created_at
+886dce19-0305-450b-af6e-b87adfc0446a,123456789,TRUE,joachim.vanpraet@flexso.com,Flexso,joachim.vanpraet@flexso.com,2019-01-01
+c6943a8a-f9db-440a-8f99-212636d6d6a8,987654321,TRUE,joachim.vanpraet@flexso.com,Flexso,joachim.vanpraet@flexso.com,2019-01-01
+3e3d2998-ea1c-47fd-9a4d-f52763ad7c1b,654987321,FALSE,joachim.vanpraet@flexso.com,Flexso,joachim.vanpraet@flexso.com,2019-01-01
+878f1b9a-69a0-491c-9702-acaa2d0c17e2,456789123,TRUE,nico.deleener@flexso.com,Flexso,joachim.vanpraet@flexso.com,2019-01-01
