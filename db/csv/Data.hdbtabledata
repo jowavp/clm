@@ -2,7 +2,7 @@
 	"format_version": 1,
 	"imports": [
 		{
-			"target_table": "BLUECARDS",
+			"target_table": "COM_VANMARCKE_BLUECARD_BLUECARDS",
 			"source_data": {
 				"data_type": "CSV",
 				"file_name": "com.vanmarcke.bluecard-BlueCards.csv",
@@ -10,7 +10,7 @@
 			},
 			"import_settings": {
 				"import_columns": [
-					"ID","cardnumber","active","email","company","created_by","created_at"
+					"ID","CARD_NUMBER","ACTIVE","EMAIL","COMPANY","CREATED_BY","CREATED_AT"
 				]
 			}
 		}

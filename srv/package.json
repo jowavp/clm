@@ -14,7 +14,7 @@
     "devDependencies": {},
     "scripts": {
         "postinstall": "npm dedupe",
-        "start": "cds serve gen/csn.json",
+        "start": "cds serve gen/csn.json"
     },
     "private": true,
     "cds": {

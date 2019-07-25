@@ -23,7 +23,7 @@ abstract entity temporal {
 
 entity BlueCards: tracked, temporal {
     key ID     : UUID;
-    cardnumber : String;
+    card_number : String;
     active     : Boolean;
     email      : String;
     company    : String;

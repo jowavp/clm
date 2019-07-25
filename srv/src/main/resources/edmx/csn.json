@@ -1,0 +1,281 @@
+{
+  "definitions": {
+    "CardLifecycleService": {
+      "kind": "service",
+      "@cds.query.limit": 100
+    },
+    "CardLifecycleService.BlueCards": {
+      "kind": "entity",
+      "@Capabilities.DeleteRestrictions.Deletable": false,
+      "@Capabilities.InsertRestrictions.Insertable": false,
+      "@Capabilities.UpdateRestrictions.Updatable": false,
+      "@cds.persistence.name": "CARDLIFECYCLESERVICE_BLUECARDS",
+      "@readonly": true,
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "com.vanmarcke.bluecard.BlueCards"
+            ]
+          }
+        }
+      },
+      "elements": {
+        "ID": {
+          "@cds.persistence.name": "ID",
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "card_number": {
+          "@cds.persistence.name": "CARD_NUMBER",
+          "type": "cds.String"
+        },
+        "active": {
+          "@cds.persistence.name": "ACTIVE",
+          "type": "cds.Boolean"
+        },
+        "email": {
+          "@cds.persistence.name": "EMAIL",
+          "type": "cds.String"
+        },
+        "company": {
+          "@cds.persistence.name": "COMPANY",
+          "type": "cds.String"
+        },
+        "created_by": {
+          "@Core.Computed": true,
+          "@cds.persistence.name": "CREATED_BY",
+          "@odata.on.insert": {
+            "#": "user"
+          },
+          "type": "cds.String",
+          "viaTransform": true
+        },
+        "created_at": {
+          "@Core.Computed": true,
+          "@cds.persistence.name": "CREATED_AT",
+          "@odata.on.insert": {
+            "#": "now"
+          },
+          "type": "cds.DateTime",
+          "viaTransform": true
+        },
+        "modified_by": {
+          "@Core.Computed": true,
+          "@cds.persistence.name": "MODIFIED_BY",
+          "@odata.on.update": {
+            "#": "user"
+          },
+          "type": "cds.String",
+          "viaTransform": true
+        },
+        "modified_at": {
+          "@Core.Computed": true,
+          "@cds.persistence.name": "MODIFIED_AT",
+          "@odata.on.update": {
+            "#": "now"
+          },
+          "type": "cds.DateTime",
+          "viaTransform": true
+        },
+        "valid_from": {
+          "@cds.persistence.name": "VALID_FROM",
+          "type": "cds.DateTime",
+          "viaTransform": true
+        },
+        "valid_to": {
+          "@cds.persistence.name": "VALID_TO",
+          "type": "cds.DateTime",
+          "viaTransform": true
+        }
+      },
+      "$syntax": "projection"
+    },
+    "CardLifecycleService.Users": {
+      "kind": "entity",
+      "@cds.persistence.name": "CARDLIFECYCLESERVICE_USERS",
+      "elements": {
+        "email": {
+          "@cds.persistence.name": "EMAIL",
+          "key": true,
+          "type": "cds.String"
+        },
+        "firstname": {
+          "@cds.persistence.name": "FIRSTNAME",
+          "type": "cds.String"
+        },
+        "lastname": {
+          "@cds.persistence.name": "LASTNAME",
+          "type": "cds.String"
+        },
+        "cards": {
+          "@cds.persistence.name": "CARDS",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "CardLifecycleService.BlueCards",
+          "on": [
+            {
+              "ref": [
+                "cards",
+                "email"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "email"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "com.vanmarcke.bluecard.BlueCards": {
+      "kind": "entity",
+      "@cds.persistence.name": "COM_VANMARCKE_BLUECARD_BLUECARDS",
+      "includes": [
+        "com.vanmarcke.bluecard.tracked",
+        "com.vanmarcke.bluecard.temporal"
+      ],
+      "elements": {
+        "ID": {
+          "@cds.persistence.name": "ID",
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "card_number": {
+          "@cds.persistence.name": "CARD_NUMBER",
+          "type": "cds.String"
+        },
+        "active": {
+          "@cds.persistence.name": "ACTIVE",
+          "type": "cds.Boolean"
+        },
+        "email": {
+          "@cds.persistence.name": "EMAIL",
+          "type": "cds.String"
+        },
+        "company": {
+          "@cds.persistence.name": "COMPANY",
+          "type": "cds.String"
+        },
+        "created_by": {
+          "@Core.Computed": true,
+          "@cds.persistence.name": "CREATED_BY",
+          "@odata.on.insert": {
+            "#": "user"
+          },
+          "type": "cds.String",
+          "viaTransform": true
+        },
+        "created_at": {
+          "@Core.Computed": true,
+          "@cds.persistence.name": "CREATED_AT",
+          "@odata.on.insert": {
+            "#": "now"
+          },
+          "type": "cds.DateTime",
+          "viaTransform": true
+        },
+        "modified_by": {
+          "@Core.Computed": true,
+          "@cds.persistence.name": "MODIFIED_BY",
+          "@odata.on.update": {
+            "#": "user"
+          },
+          "type": "cds.String",
+          "viaTransform": true
+        },
+        "modified_at": {
+          "@Core.Computed": true,
+          "@cds.persistence.name": "MODIFIED_AT",
+          "@odata.on.update": {
+            "#": "now"
+          },
+          "type": "cds.DateTime",
+          "viaTransform": true
+        },
+        "valid_from": {
+          "@cds.persistence.name": "VALID_FROM",
+          "type": "cds.DateTime",
+          "viaTransform": true
+        },
+        "valid_to": {
+          "@cds.persistence.name": "VALID_TO",
+          "type": "cds.DateTime",
+          "viaTransform": true
+        }
+      }
+    },
+    "com.vanmarcke.bluecard.temporal": {
+      "kind": "entity",
+      "@cds.persistence.name": "COM_VANMARCKE_BLUECARD_TEMPORAL",
+      "abstract": true,
+      "elements": {
+        "valid_from": {
+          "@cds.persistence.name": "VALID_FROM",
+          "type": "cds.DateTime",
+          "viaTransform": true
+        },
+        "valid_to": {
+          "@cds.persistence.name": "VALID_TO",
+          "type": "cds.DateTime",
+          "viaTransform": true
+        }
+      }
+    },
+    "com.vanmarcke.bluecard.tracked": {
+      "kind": "entity",
+      "@cds.persistence.name": "COM_VANMARCKE_BLUECARD_TRACKED",
+      "abstract": true,
+      "elements": {
+        "created_by": {
+          "@Core.Computed": true,
+          "@cds.persistence.name": "CREATED_BY",
+          "@odata.on.insert": {
+            "#": "user"
+          },
+          "type": "cds.String",
+          "viaTransform": true
+        },
+        "created_at": {
+          "@Core.Computed": true,
+          "@cds.persistence.name": "CREATED_AT",
+          "@odata.on.insert": {
+            "#": "now"
+          },
+          "type": "cds.DateTime",
+          "viaTransform": true
+        },
+        "modified_by": {
+          "@Core.Computed": true,
+          "@cds.persistence.name": "MODIFIED_BY",
+          "@odata.on.update": {
+            "#": "user"
+          },
+          "type": "cds.String",
+          "viaTransform": true
+        },
+        "modified_at": {
+          "@Core.Computed": true,
+          "@cds.persistence.name": "MODIFIED_AT",
+          "@odata.on.update": {
+            "#": "now"
+          },
+          "type": "cds.DateTime",
+          "viaTransform": true
+        }
+      }
+    }
+  },
+  "version": {
+    "csn": "1.0"
+  },
+  "meta": {
+    "creator": "CDS Compiler v1.15.0"
+  },
+  "$version": "1.0",
+  "@sql_mapping": "plain"
+}
